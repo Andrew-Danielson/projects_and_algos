@@ -10,15 +10,12 @@
 <div class="row"></div>
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6">
-                <h2>Registration</h2>
-            </div>
-            <div class="col-6">
-                <h2>Login</h2>
+                <h2>New Kid Registration</h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6">
                 <form action="/register" class="form-control border-0" method = 'POST'>
                         <div class="row col-4">
@@ -29,13 +26,7 @@
                             <label for="last_name">Last Name:</label>
                             <input type="text" name="last_name">
                         </div>
-                        <div class="row col-4">
-                            <label for="is_parent">Are you the parent?</label>
-                            <input type="radio" name="is_parent" value="False" checked>
-                            <label for="False">No</label>
-                            <input type="radio" name="is_parent" value="True">
-                            <label for="True">Yes</label>
-                        </div>
+                        <input type="hidden" name="is_parent" value="False">
                         <div class="row col-4">
                             <label for="email">Email address:</label>
                             <input type="email" name="email">
@@ -60,29 +51,3 @@
                     {% endwith %}
                 </form>
             </div>
-            <div class="col-6">
-                <form action="/login" class="form-control border-0" method = 'POST'>
-                    <div class="row col-4">
-                        <label for="email">Email address:</label>
-                        <input type="email" name="email">
-                    </div>
-                    <div class="row col-4">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password">
-                    </div>
-                    <input type="submit" value="submit" class="btn btn-outline-primary m-3">
-                    {% with messages = get_flashed_messages(category_filter=["login"]) %}
-                        {% if messages %}
-                            {% for message in messages %}
-                            <div class="text-danger">
-                                <p>{{message}}</p>
-                            </div>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
-</html>

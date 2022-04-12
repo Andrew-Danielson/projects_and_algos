@@ -1,5 +1,5 @@
 from flask_app import app
-from flask_app.models import chore
+from flask_app.models import chore, assigned_chore
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 import re
@@ -13,7 +13,7 @@ class User:
         self.id = data['id']
         self.first_name = data['first_name']
         self.last_name = data['last_name']
-        self.age = data['age']
+        self.is_parent = data['is_parent']
         self.email = data['email']
         self.password = data['password']
         self.created_at = data['created_at']
@@ -31,8 +31,8 @@ class User:
         if len(user['last_name']) < 3:
             flash("Last name must be at least 3 characters.", "registration")
             is_valid = False
-        if int(user['age']) < 18:
-            flash("You must have your parent register for this site first", "registration")
+        if  user['is_parent'] == 'False':
+            flash("You must have your parent or gaurdian register for this site first", "registration")
         if len(results) >= 1:
             flash("Email already taken.", "registration")
             is_valid = False
@@ -49,7 +49,7 @@ class User:
 
     @classmethod
     def save_user(cls, data):
-        query = "INSERT INTO users (first_name, last_name, age, email, password) VALUES (%(first_name)s, %(last_name)s, %(age)s, %(email)s, %(password)s);"
+        query = "INSERT INTO users (first_name, last_name, is_parent, email, password) VALUES (%(first_name)s, %(last_name)s, %(is_parent)s, %(email)s, %(password)s);"
         return connectToMySQL("chores_schema").query_db(query, data)
 
     @classmethod
@@ -68,7 +68,7 @@ class User:
 
     @classmethod
     def get_all_users(cls):
-        query = "SELECT * FROM users;"
+        query = "SELECT * FROM users WHERE is_parent = 'False';"
         results = connectToMySQL('chores_schema').query_db(query)
         users = []
         for entry in results:
