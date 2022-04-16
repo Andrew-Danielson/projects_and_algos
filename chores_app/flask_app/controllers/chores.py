@@ -42,6 +42,8 @@ def create_chore():
 def view_chores(id):
     if "userid" not in session:
         return redirect('/logout')
+    if session['is_parent'] == 'True':
+        return redirect('/family_dashboard')
     data1 = {
         "user_id": session['userid']
         }
