@@ -12,32 +12,34 @@
         <div class="d-flex justify-content-center mt-5">
             <h1>Hello {{user.last_name}} Family!</h1>
         </div>
-        <div class="d-flex justify-content-between mt-5">
+        <div class="d-flex justify-content-between mt-4 mb-5">
             <a class="btn btn-outline-primary" href="/chores/{{user.id}}">Kid Dashbaord</a>
             <a class="btn btn-outline-primary" href="/parent_dashboard">Parent Dashboard</a>
             <a class="btn btn-outline-primary" href="/logout">Logout</a>
         </div>
-        <table class="table">
-            <thead>
-                <h2>Current Chores</h2>
-                <tr>
-                    <th>Chore</th>
-                    <th>Worker</th>
-                    <th>Date Assigned</th>
-                    <th>Finished!</th>
-                </tr>
-            </thead>
-            <tbody style="height: 500px;">
-                {% for chore in all_assigned_chores %}
-                <tr scope="row">
-                    <td>{{chore.name}}</td>
-                    <td>{{chore.first_name}}</td>
-                    <td>{{chore.created_at}}</td>
-                    <td>{{chore.is_finished}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive" style="height: 500px;">
+            <table class="table">
+                <thead>
+                    <h2 class="text-center">Current Chores</h2>
+                    <tr>
+                        <th>Chore</th>
+                        <th><del>Employee</del> My Dedicated Hard Working Child</th>
+                        <th>Date Assigned</th>
+                        <th>Finished!</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chore in all_assigned_chores %}
+                    <tr>
+                        <td>{{chore.name}}</td>
+                        <td>{{chore.first_name}}</td>
+                        <td>{{chore.created_at}}</td>
+                        <td>{{chore.is_finished}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

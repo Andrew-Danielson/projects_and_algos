@@ -31,7 +31,7 @@ class User:
         if len(user['last_name']) < 3:
             flash("Last name must be at least 3 characters.", "registration")
             is_valid = False
-        if  user['is_parent'] == 'False':
+        if  user['is_parent'] == 'false':
             flash("You must have your parent or gaurdian register for this site first", "registration")
         if len(results) >= 1:
             flash("Email already taken.", "registration")

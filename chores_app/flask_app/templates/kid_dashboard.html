@@ -14,27 +14,29 @@
             <a class="btn btn-outline-primary" href="/family_dashboard">Family Dashbaord</a>
             <a class="btn btn-outline-primary" href="/logout">Logout</a>
         </div>
-        <table class="table">
-            <thead>
-                <h2>Your Current Chores</h2>
-                <tr>
-                    <th>Chore</th>
-                    <th>Description</th>
-                    <th>Date Assigned</th>
-                    <th>Finished!</th>
-                </tr>
-            </thead>
-            <tbody style="height: 500px;">
-                {% for chore in all_assigned_chores %}
-                <tr scope="row">
-                    <td>{{chore.name}}</td>
-                    <td>{{chore.description}}</td>
-                    <td>{{chore.created_at}}</td>
-                    <td>{{chore.is_finished}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive mt-5" style="height: 500px;">
+            <table class="table">
+                <thead>
+                    <h2 class="text-center">Your Current Chores</h2>
+                    <tr>
+                        <th>Chore</th>
+                        <th>Description</th>
+                        <th>Date Assigned</th>
+                        <th>Finished!</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chore in all_assigned_chores %}
+                    <tr>
+                        <td>{{chore.name}}</td>
+                        <td>{{chore.description}}</td>
+                        <td>{{chore.created_at}}</td>
+                        <td>{{chore.is_finished}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

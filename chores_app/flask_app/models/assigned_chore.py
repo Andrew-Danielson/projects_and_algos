@@ -38,22 +38,22 @@ class Assigned_Chore:
                 "description" : row['description'], 
             }
             chores.append(user_data)
-            print(chores)
+            # print(chores)
         return chores
 
     @classmethod
     def get_assigned_chore_by_user_id(cls, data):
         query = "SELECT * FROM assigned_chores JOIN chores ON assigned_chores.chore_id = chores.id JOIN users ON assigned_chores.user_id = users.id WHERE users.id = %(user_id)s AND assigned_chores.is_finished = 'False';"
         results = connectToMySQL("chores_schema").query_db(query, data)
-        print('HERE')
-        print(type(results))
-        print(type(results[0]))
-        print(results)
+        # print('HERE')
+        # print(type(results))
+        # print(type(results[0]))
+        # print(results)
         chores = []
         for row in results:
             chore_instance = cls(row)
-            print(chore_instance.id)
-            print(chore_instance.is_finished)
+            # print(chore_instance.id)
+            # print(chore_instance.is_finished)
             user_data = {
                 "user_id" : row['users.id'],
                 "first_name" : row['first_name'],
@@ -68,7 +68,7 @@ class Assigned_Chore:
                 "description" : row['description'], 
             }
             chores.append(user_data)
-            print(chores)
+            # print(chores)
         return chores
 
     @classmethod

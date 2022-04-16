@@ -10,43 +10,43 @@
 <body>
     <div class="container">
         <div class="d-flex justify-content-between mt-5">
-            <h1>Hello {{sess_user.first_name}}!</h1>
             <a class="btn btn-outline-primary" href="/new_chore_form" role="button">New Chore</a>
             <a class="btn btn-outline-primary" href="/new_kid_form" role="button">New Kid</a>
+            <h1>Hello {{sess_user.first_name}}!</h1>
             <a class="btn btn-outline-primary" href="/family_dashboard">Family Dashbaord</a>
             <a class="btn btn-outline-primary" href="/logout">Logout</a>
         </div>
         <div class="col-12 d-flex">
-            <div class="col-6 boarder-2 border-dark mt-5">
-                <h2>Assign Chores!</h2>
+            <div class="col-6 mt-5">
+                <h2 class="text-center">Assign Chores!</h2>
                 <form action="/assign_chore" class="form-control border-0" method = 'POST'>
-                    <div class="col-6">
-                        <select class="form-select mt-2">
+                    <div class="col-12">
+                        <select name="user.id" class="form-select mt-2">
                             {% for user in all_users %}
-                                <option value="{{user.id}}">{{user.first_name}} {{user.last_name}} {{user.id}}</option>
+                                <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
                             {% endfor %}
                         </select>
-                        <select class="form-select mt-2">
+                        <select name="chore.id" class="form-select mt-2">
                             {% for chore in all_chores %}
-                                <option value="{{chore.id}}">{{chore.name}} {{chore.id}}</option>
+                                <option value="{{chore.id}}">{{chore.name}}</option>
                             {% endfor %}
                         </select>
-                        <div class="row col-5">
+                        <div class="row col-4">
                             <input type="submit" value="submit" class="btn btn-outline-primary m-3">
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-6 boarder-2 border-dark mt-5">
-                <h2>Mark as Complete</h2>
+            <div class="col-6 mt-5">
+                <h2 class="text-center">Mark as Complete</h2>
                 <form action="/finish_chore" class="form-control border-0" method = 'POST'>
-                    <div class="col-6">
-                        <select class="form-select mt-2">
+                    <div class="col-12">
+                        <select name="assigned_chore.id" class="form-select mt-2">
                             {% for assigned_chore in all_assigned_chores %}
-                                <option value="{{assigned_chore.id}}">{{assigned_chore.first_name}} - {{assigned_chore.name}} - {{assigned_chore.id}}</option>
+                                <option value="{{assigned_chore.id}}">{{assigned_chore.first_name}} - {{assigned_chore.name}}</option>
                             {% endfor %}
                           </select>
-                          <div class="row col-5">
+                          <div class="row col-4">
                             <input type="submit" value="submit" class="btn btn-outline-primary m-3">
                         </div>
                     </div>

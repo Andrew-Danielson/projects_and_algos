@@ -11,24 +11,23 @@
     <div class="container">
         <div class="d-flex justify-content-between mt-5">
             <h1>Make a new chore! They'll love it!</h1>
+            <a class="btn btn-outline-primary" href="/new_kid_form" role="button">New Kid</a>
+            <a class="btn btn-outline-primary" href="/family_dashboard">Family Dashbaord</a>
+            <a class="btn btn-outline-primary" href="/logout">Logout</a>
         </div>
-        <div class="d-flex align-items-end flex-column">
-            <a href="/family_dashboard">Home</a><br>
-            <a href="/logout">Logout</a>
-        </div>
-        <div class="row">
-            <div class="col-12">
+        <div class="row d-flex justify-content-center">
+            <div class="col-4 border border-2 border-dark rounded mt-5">
                 <form action="/create_chore" class="form-control border-0" method="POST">
                     <div class="col-12">
-                        <div class="col-4">
+                        <div class="col-6">
                             <label for="name" class="mt-2">Name:</label><br>
                             <input type="text" name="name">
-                        <div class="col-4">
+                        </div>
+                        <div class="col-6">
                             <label for="description" class="mt-2">Description:</label>
                             <textarea name="description" cols="30" rows="10"></textarea>
                         </div>
-                    </div>
-                    <div class="row col-2">
+                    <div class="row col-4">
                         <input type="submit" value="submit" class="btn btn-outline-primary m-3">
                     </div>
                     {% with messages = get_flashed_messages(category_filter=["new"]) %}
