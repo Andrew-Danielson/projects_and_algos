@@ -19,7 +19,7 @@ class Assigned_Chore:
 
     @classmethod
     def get_all_assigned_chores(cls):
-        query = "SELECT * FROM assigned_chores JOIN chores ON assigned_chores.chore_id = chores.id JOIN users ON assigned_chores.user_id = users.id"
+        query = "SELECT * FROM assigned_chores JOIN chores ON assigned_chores.chore_id = chores.id JOIN users ON assigned_chores.user_id = users.id WHERE is_finished = 'false';"
         results = connectToMySQL("chores_schema").query_db(query)
         chores = []
         for row in results:
